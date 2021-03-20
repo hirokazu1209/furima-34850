@@ -22,9 +22,9 @@
 
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
-| item_name              | string     | null: false                    |
-| item_description       | string     | null: false                    |
-| item_price             | int        | null: false                    |
+| name                   | string     | null: false                    |
+| description            | text       | null: false                    |
+| price                  | integer    | null: false                    |
 | item_condition_id      | integer    | null: false                    |
 | shipping_fee_burden_id | integer    | null: false                    |
 | shipment_source_id     | integer    | null: false                    |
