@@ -25,7 +25,7 @@
 | name                   | string     | null: false                    |
 | description            | text       | null: false                    |
 | price                  | integer    | null: false                    |
-| item_condition_id      | integer    | null: false                    |
+| condition_id           | integer    | null: false                    |
 | shipping_fee_burden_id | integer    | null: false                    |
 | shipment_source_id     | integer    | null: false                    |
 | day_to_ship_id         | integer    | null: false                    |
