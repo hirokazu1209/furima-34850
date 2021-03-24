@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
+    validates :password, presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
     validates :birthday
-    validates :encrypted_password
   end
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]/ }  do
@@ -19,5 +19,6 @@ class User < ApplicationRecord
     validates :first_name_reading
     validates :last_name_reading
   end
+
 
 end
