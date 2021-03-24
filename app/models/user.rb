@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :encrypted_password
     validates :birthday
+    validates :encrypted_password
   end
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]/ }  do
