@@ -6,6 +6,10 @@ RSpec.describe User, type: :model do
   end
 
   describe '新規登録/ユーザー情報' do
+    it 'すべての情報が正しく入力されていれば、登録できる' do
+      expect(@user).to be_valid
+    end
+
     it 'ニックネームが必須であること' do
       @user.nickname = ''
       @user.valid?
@@ -39,8 +43,8 @@ RSpec.describe User, type: :model do
     end
 
     it 'パスワードは、6文字以上での入力が必須であること（6文字が入力されていれば、登録が可能なこと）' do
-      @user.password = '12345'
-      @user.password_confirmation = '12345'
+      @user.password = '123aa'
+      @user.password_confirmation = '123aa'
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
@@ -88,6 +92,18 @@ RSpec.describe User, type: :model do
       @user.last_name = 'ｱｲｳｴｵ'
       @user.valid?
       expect(@user.errors.full_messages).to include('Last name is invalid')
+    end
+
+    it 'ユーザー本名のフリガナは、全角（カタカナ）での入力が必須であること' do
+      @user.first_name_reading = 'ｱｲｳｴｵ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('First name reading is invalid')
+    end
+
+    it 'ユーザー本名のフリガナは、全角（カタカナ）での入力が必須であること' do
+      @user.last_name_reading = 'ｱｲｳｴｵ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Last name reading is invalid')
     end
 
     it 'ユーザー本名のフリガナは、名字と名前がそれぞれ必須であること' do

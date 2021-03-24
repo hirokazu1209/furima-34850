@@ -5,12 +5,19 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   with_options presence: true do
-    validates :nickname,           presence: true
-    validates :encrypted_password, presence: true
-    validates :first_name,         presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :last_name,          presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :first_name_reading, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
-    validates :last_name_reading,  presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
-    validates :birthday,           presence: true
+    validates :nickname
+    validates :encrypted_password
+    validates :birthday
   end
+
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]/ }  do
+    validates :first_name
+    validates :last_name
+  end
+
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/ } do
+    validates :first_name_reading
+    validates :last_name_reading
+  end
+
 end
