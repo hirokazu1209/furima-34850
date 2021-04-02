@@ -29,7 +29,7 @@ RSpec.describe Item, type: :model do
         @item.description = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
-      end
+      endex
 
       it 'カテゴリーの情報が必須であること' do
         @item.category_id = 1
