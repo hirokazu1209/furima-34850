@@ -76,7 +76,7 @@ RSpec.describe OrderAddress, type: :model do
       end
 
       it 'phone_numberは、11桁以内でないと保存出来ないこと' do
-        @order_address.phone_number = 000000000
+        @order_address.phone_number = '000000000000'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is invalid. Include hyphen(-)')
       end
