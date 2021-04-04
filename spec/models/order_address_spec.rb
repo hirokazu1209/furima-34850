@@ -69,11 +69,36 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
 
+      it 'phone_numberは、数字のみでないと保存出来ないこと' do
+        @order_address.phone_number = 'aaaaaaaaaa'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
+      end
+
+      it 'phone_numberは、11桁以内でないと保存出来ないこと' do
+        @order_address.phone_number = 000000000
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Include hyphen(-)')
+      end
+
       it 'tokenが空だと保存できないこと' do
         @order_address.token = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
+
+      it 'user_idが空だと保存できないこと' do
+        @order_address.user_id = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空だと保存できないこと' do
+        @order_address.item_id = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
+      end
+
     end
   end
 end
