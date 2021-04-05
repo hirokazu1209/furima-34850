@@ -8,7 +8,6 @@ class OrderAddress
     validates :city
     validates :house_number
     validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :phone_number, numericality: {only_integer: true, message: "is invalid"}, allow_blank: true
     validates :user_id
     validates :token
     validates :item_id
